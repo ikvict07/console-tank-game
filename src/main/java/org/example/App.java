@@ -8,8 +8,8 @@ import java.io.IOException;
  */
 public class App 
 {
-    private static final ConsoleGenerator generator = new ConsoleGenerator();
-    public static void main( String[] args ) throws IOException {
-        generator.generate(40, 226);
+    private static final Game game = new Game();
+    public static void main( String[] args ) {
+        game.start(40, 226);
     }
 }

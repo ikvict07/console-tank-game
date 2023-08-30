@@ -1,17 +1,42 @@
 package org.example;
 
+import lombok.Data;
+
 import java.util.Random;
 
-public class EnemyTank extends Tank{
+@Data
+public class EnemyTank implements Tank {
+    private int x;
+    private int y;
+    private int height;
+    private int width;
+    private Ballistic ballistic;
+
+    private int angle;
+    private int velocity;
+
     public EnemyTank(int x, int y, int height, int width, Ballistic ballistic) {
-        super(x, y, height, width, ballistic);
+        this.x = x;
+        this.y = y;
+        this.height = height;
+        this.width = width;
+        this.ballistic = ballistic;
     }
+
 
     public void shoot(char[][] grid) {
-        int angle = new Random().nextInt(30, 65);
-        int velocity = new Random().nextInt(15, 30);
+        setCoordinates();
         double time = (2 * velocity * Math.sin(Math.toRadians(angle)) / Ballistic.g);
 
-        super.getBallistic().drawBallisticCurveForEnemy(super.getX(), super.getY(), grid, angle, velocity, time);
+        ballistic.drawBallisticCurve(x, y, grid, angle, velocity, time, true);
     }
+
+    private void setCoordinates() {
+        Random random = new Random();
+        angle = random.nextInt(30, 85);
+        velocity = random.nextInt(15, 45);
+    }
+
+
 }
+
