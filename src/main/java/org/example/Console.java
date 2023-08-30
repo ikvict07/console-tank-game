@@ -16,12 +16,12 @@ public class Console {
     static int enemyTankPos_X;
     static int enemyTankPos_Y;
 
-    static void prepareField(int height, int width, char[][] grid) {
+    static void prepareField(int height, int width, int amplitude, char[][] grid) {
         int midHeight = height / 2;
         int midWidth = width / 2;
         for (int w = 0; w < width; w++) {
             double radians = ((double) w / 50) * 2 * Math.PI;
-            int y = midHeight + (int) (Math.sin(radians / 2.5) * midHeight) / 2 + midHeight / 2 + midHeight / 10;
+            int y = height - ((int) (Math.sin(radians / 2.5) * amplitude) + amplitude / 2);
             y = Math.max(Math.min(y, height - 1), 0);
             grid[y][w] = GROUND.symbol;
 

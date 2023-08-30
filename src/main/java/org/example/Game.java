@@ -2,13 +2,13 @@ package org.example;
 
 
 public class Game {
-    public void start(int height, int width) {
+    public void start(int height, int width, int amplitude) {
 
         char[][] grid = new char[height][width];
 
         Console.fillGridWithEmptyChars(height, width, grid);
 
-        Console.prepareField(height, width, grid);
+        Console.prepareField(height, width, amplitude, grid);
 
         Ballistic ballistic = new Ballistic(height, width);
         MyTank tank = new MyTank(Console.tankPos_X, Console.tankPos_Y, height, width, ballistic);

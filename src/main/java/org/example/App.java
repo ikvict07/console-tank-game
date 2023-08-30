@@ -10,6 +10,6 @@ public class App
 {
     private static final Game game = new Game();
     public static void main( String[] args ) {
-        game.start(40, 226);
+        game.start(80, 226, 10);
     }
 }
